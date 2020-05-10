@@ -40,6 +40,13 @@ namespace Website
                 twitterOptions.ConsumerKey = Configuration["Authentication:Twitter:ConsumerAPIKey"];
                 twitterOptions.ConsumerSecret = Configuration["Authentication:Twitter:ConsumerSecret"];
                 twitterOptions.RetrieveUserDetails = true;
+            })
+            .AddGoogle(options =>
+            {
+                IConfigurationSection googleAuthNSection = Configuration.GetSection("Authentication:Google");
+
+                options.ClientId = googleAuthNSection["ClientId"];
+                options.ClientSecret = googleAuthNSection["ClientSecret"];
             });
         }
 
